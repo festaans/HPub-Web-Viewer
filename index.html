@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hpub Viewer</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css">
+    <style>
+	html {
+		height: 100%;
+	
+	}
+	body {
+	height: 100%;
+	padding: 0px;
+		margin: 0px;
+			background-color: #666666 !important;
+			background-image: url('assets/img/back.png');
+	}
+	#page {
+    background-color: #ffffff;
+		margin:auto;
+		width: 960px;
+		padding-top: 45px;
+		height: 90%;
+    -webkit-box-shadow:0 3px 10px rgba(0,0,0,0.8);
+	}
+
+	#index {
+		background-color: #333333;
+		height:100%;
+	}
+
+	::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8); 
+}
+
+	</style>
+
+	<script type="text/javascript" src="assets/js/jquery-1.8.0.js"></script>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+
+<ul class="nav nav-pills">
+
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#QuickNav">
+      Index
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <span id="quicknav"></span>
+    </ul>
+  </li>
+</ul>
+
+<!--  <li><a href="book/index.html" target="book">Prev</a></li>
+</ul>
+
+<ul class="nav pull-right">
+
+  <li><a href="book/index.html" target="book">Next</a></li>
+</ul>
+-->
+    </div>
+  </div>
+</div>
+	<div id="page">
+
+<iframe src="book/index.html" name="book" style="width:100%; height:100%; z-index: -9999; overflow:scroll; float: left; border: 0px;"></iframe>
+
+    </div>
+
+   
+    <script>
+  $.getJSON('book/book.json', function(data) {
+        var output=" ";
+        for (var i in data.contents) {
+            output+="<li>" + "<a href=" + "book/" + data.contents[i] + " " + "target=" + "book" + ">" + data.contents[i] + "</a>" + "</li>";
+        }
+
+        output+=" ";
+        document.getElementById("quicknav").innerHTML=output;
+  });
+    </script>
+
+    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
+</body>
+
+
+
+
+</html>
